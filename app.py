@@ -31,11 +31,19 @@ col1.markdown("<h3 style='text-align: right; color: purple;'>\
     Coding Test</h3>",
     unsafe_allow_html=True)
 
+<<<<<<< HEAD
 col2.image('/images/TailsLogo.png', use_column_width=True, \
     output_format='PNG')
 
 col3.image('/images/MichaelHayman.jpeg', width=165, \
     output_format='JPEG')
+=======
+col2.image('./images/TailsLogo.png', use_column_width=True)
+#     output_format='PNG')
+
+col3.image('./images/MichaelHayman.jpeg', width=165)
+#     output_format='JPEG')
+>>>>>>> 9aad50ede85f15f4fa3ccfcfce8fb33cca411c68
 
 
 st.markdown("<h2 style='text-align: center; color: grey'>\
