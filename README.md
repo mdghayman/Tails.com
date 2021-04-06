@@ -17,5 +17,21 @@ The app's user interface contains three simple steps. Once you have followed the
 3. Simply click the `Calculate output` button to generate the desired JSON output. This output includes `customer_country`, `customer_currency`, `exchange_rate`, `total_price_GBP`, `total_vat_GBP`, and for each product includes `product_id`, `price_GBP`, and `vat`. If `customer_country` is not `United Kingdom`, the output will also include `customer_currency` amounts for `total price`, `total vat`, and `price` for each product.
 
 ## 2.  If you had more time, what improvements would you make if any?
+
+I would generate more tests, to ensure every possible case is covered. Instead, I have only included a few tests here as an illustrative example.
+
+Perhaps this lies outside the scope of this individual challenge, but in practice I would be sure to partner with any internal and external stakeholders early on in the process of developing an API or other component of the data engineering pipeline. This would ensure they play a role in designing, testing, and integrating the component. If such stakeholders will ultimately get more use out of the component than I will, it's essential for them to take ownership and for me to deliver what they demand.
+
 ## 3.  What bits did you find the toughest? What bit are you most proud of? In both cases, why?
+
+### Toughest bits
+
+Nothing really pushed me out of my comfort zone. I guess it was tough to know when to stop and hand the test over - while I only spent a few hours and created something good enough, it's important to remember that quick and functional is often better than slow and perfect.
+
+### Proudest bits
+
+I'm most proud of the user interface I created to interact with this app. As discussed below, this approach is hardly efficient or scalable as part of a data engineering pipeline, but it allows for a quick understanding of the tool for a user without having to the think about the code. It could even serve a role in practice, by allowing teams with different priorities and technical backgrounds to visualise the structure and impacts of potential new components in a data engineering pipeline.
+
 ## 4.  What one thing could we do to improve this test?
+
+A bit more clarity on how the API would fit into your data pipeline. For example, here I've created a user interface so anybody can generate the desired outputs - using a drag and drop file upload, and dropdown menu selection - making a no code solution that's easy to understand, but the JSON output is probably not useful for the user of the app, and processing JSON inputs as individual text files is not an efficient or scalable mechanism.
