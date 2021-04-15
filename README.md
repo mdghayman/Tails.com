@@ -3,18 +3,19 @@
 
 ## 1.  What command(s) do we run to install and start your server?
 
-### Starting the app
-1. Store this repo on your hard drive, either by opening the zip file sent to you, or by downloading or cloning from GitHub.
-2. If you do not have Streamlit installed, then install it with the command `pip install streamlit` (this assumes Python3 and pip are installed in your environment, but if not you can follow these `instructions for Python3 [https://www.python.org/downloads/]` and then these `instructions for pip [https://pip.pypa.io/en/stable/installing/]`).
-3. Navigate to the folder containing the Streamlit app file (e.g. if your pwd contains this repo `Tails.com`, enter `cd Tails.com/app` in your command line).
-5. Run the streamlit app, with the command `streamlit run app.py`.
-6. View the app on your browser, with the URL `http://localhost:8501`.
+### Starting the server
 
-### Using the app
-The app's user interface contains three simple steps. Once you have followed the above instructions to start the app, follow these steps to use it.
-1. You may drag and drop a new input file directly into the app. Your new file will then be stored as `pricing.json` and will be used in the model. By default, the model will always use the file saved as `pricing.json` within the `app` folder as input.
-2. You may select the customer's country. Clicking on the box here opens a dropdown menu with every country listed at `https://free.currencyconverterapi.com/`. You may type the first few letters of the country here to navigate quickly to your country of choice. Once the customer country is selected, this will effect the state of the app and therefore its outputs, until you refresh the page and thus revert it to the starting state. The customer country is `United Kingdom` by default, and will remain so if you do not interact with this step.
-3. Simply click the `Calculate output` button to generate the desired JSON output. This output includes `customer_country`, `customer_currency`, `exchange_rate`, `total_price_GBP`, `total_vat_GBP`, and for each product includes `product_id`, `price_GBP`, and `vat`. If `customer_country` is not `United Kingdom`, the output will also include `customer_currency` amounts for `total price`, `total vat`, and `price` for each product.
+1. Store this repo on your hard drive, either by opening the zip file sent to you, or by downloading or cloning from GitHub.
+2. In your command line, change directory to navigate to this repo.
+3. In your command line, run the command `pip install -r requirements.txt`. You may instead need to run `pip3 install -r requirements.txt`, depending on your environment. This assumes that Python and pip are already install in your environment, but if not you can follow these instructions for Python3 `https://www.python.org/downloads/` and then these instructions for pip `https://pip.pypa.io/en/stable/installing/`.
+6. Run the command `python main.py` in your command line. The server will now be running on `http://127.0.0.1:5000/`.
+
+### Using the API
+
+1. To return output for a local (United Kingdom) customer: `http://127.0.0.1:5000/`.
+2. To return output for a customer from country with three letter code `XXX`: `http://127.0.0.1:5000/XXX/`.
+3. The output includes `customer_country`, `customer_currency`, `exchange_rate`, `total_price_GBP`, `total_vat_GBP`, and for each product includes `product_id`, `price_GBP`, and `vat`. If `customer_country` is not `United Kingdom`, the output will also include `customer_currency` amounts for `total price`, `total vat`, and `price` for each product.
+4. The file named `pricing.json` will be used as input.
 
 ## 2.  If you had more time, what improvements would you make if any?
 
@@ -26,12 +27,12 @@ Perhaps this lies outside the scope of the challenge, but in practice I would be
 
 ### Toughest bits
 
-Nothing really pushed me out of my comfort zone. I guess it was tough to know when to stop and hand the test over - while I only spent a few hours and created something good enough, it's important to remember that quick and functional often beats slow and perfect.
+Understanding exactly what was required from the test - very much a conceptual and isolated API. It would be easier if I could see how the data inputs and outputs would fit together, but in this simple example there's only a text file input and JSON output at a URL. This led me to overthink the problem and build a frontend initially for completeness, and in doing so I used Streamlit to shortcut the backend, but upon realising this mistake I could simply build a Flask backend.
 
 ### Proudest bits
 
-I'm most proud of the user interface I created to interact with this app. As discussed below, this approach is hardly efficient or scalable as part of a data engineering pipeline, but it allows for a quick understanding of the tool for a user without having to the think about the code. It could even serve a role in practice, by allowing teams with different priorities and technical backgrounds to visualise the structure and impacts of potential new components in a data engineering pipeline, so the process is demystified and all stakeholders are on the same page throughout development.
+I'm proud when reflecting on the wide range of skills I've been improving in recent months. As I haven't worked as in a data engineer role in a company with a large complete data team, I haven't had to build APIs that would be used by other stakeholders, but it was an easy task once I realised that I was overthinking it and building an API in Flask was like a simplified version of building an app backend in Flask.
 
 ## 4.  What one thing could we do to improve this test?
 
-A bit more clarity on how the API would fit into your data pipeline. For example, here I've created a user interface so anybody can generate the desired outputs - using a drag and drop file upload, and dropdown menu selection - making a no code solution that's easy to understand. But the JSON output is probably not useful for the user of the app, and processing JSON inputs as individual text files is not an efficient or scalable mechanism.
+A bit more clarity on how the API would fit into your data pipeline. For example, I've assumed the input is read from the text file included in the challenge repo on GitHub, but this wouldn't make much sense in a production environment. Instead, the test could specify some kind of service that passes the pricing data into the API - this might make things more complicated for the sake of the challenge, but could generate some fun and realistic integrated solutions.
