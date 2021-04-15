@@ -12,7 +12,7 @@ if not os.path.isfile('countries_details.txt'):
 countries_details = json.loads(open('countries_details.txt').read())
 customer_country = 'United Kingdom'
 
-input_json = json.loads(open('pricing.json').read())
+input_json = json.loads(open('pricing.json', 'r').read())
 
 class test_cache_countries_output(unittest.TestCase):
     def test_output(self):
