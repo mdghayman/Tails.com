@@ -20,9 +20,7 @@
 
 ## 2.  If you had more time, what improvements would you make if any?
 
-I would generate more tests, to ensure every possible case is covered - I have only included a few tests here as an illustrative example.
-
-Perhaps this lies outside the scope of the challenge, but in practice I would be sure to partner with any internal and external stakeholders early on in the process of developing an API or other component of the data engineering pipeline. This would ensure they play a role in designing, testing, and integrating the component. If such stakeholders will ultimately get more use out of the component than I will, it's essential for them to take ownership and for me to deliver what they demand.
+I would generate more tests, to ensure every possible case is covered - I have only included a few tests here as an illustrative example. Also, while it lies outside the scope of this test, in practice I would be sure to partner with any internal and external stakeholders early on in the process of developing an API or other component of the data engineering pipeline. This would ensure they play a role in designing, testing, and integrating the component. If such stakeholders will ultimately get more use out of the component than I will, it's essential for them to take ownership and for me to deliver what they demand.
 
 ## 3.  What bits did you find the toughest? What bit are you most proud of? In both cases, why?
 
