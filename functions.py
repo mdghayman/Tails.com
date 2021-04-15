@@ -28,7 +28,7 @@ def calculate_rate(customer_currency):
     exchange_rate_json = requests.get(exchange_rate_url).json()
     exchange_rate = [exchange_rate_json[key] \
         for key in exchange_rate_json.keys()][0]
-    return exchange_rate
+    return float(exchange_rate)
 
 def calculate_output(customer_country, input_json):
     customer_currency = determine_currency(customer_country)
