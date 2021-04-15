@@ -9,26 +9,35 @@ from functions import (cache_countries, determine_currency, calculate_rate,
 if not os.path.isfile('countries_details.txt'):
     cache_countries()
 
+countries_details = json.loads(open('countries_details.txt').read())
+customer_country = 'United Kingdom'
+
 app = Flask(__name__)
 api = Api(app)
 
 class OutputLocal(Resource):
     def get(self):
-        customer_country = 'United Kingdom'
         input_json = json.loads(open('pricing.json').read())
         return calculate_output(customer_country, input_json)
 
 class OutputForeign(Resource):
     def get(self, country_code):
-        countries_details = json.loads(open('countries_details.txt').read())
         for key, value in countries_details['results'].items():
             if country_code == value['alpha3']:
                 customer_country = value['name']
         input_json = json.loads(open('pricing.json').read())
         return calculate_output(customer_country, input_json)
 
+class CountryCodes(Resource):
+    def get(self):
+        country_codes = {}
+        for key, value in countries_details['results'].items():
+            country_codes[value['alpha3']] = value['name']
+        return country_codes
+
 api.add_resource(OutputLocal, '/')
-api.add_resource(OutputForeign, '/<string:country_code>')
+api.add_resource(OutputForeign, '/<string:country_code>/')
+api.add_resource(CountryCodes, '/country_codes/')
 
 if __name__ == '__main__':
     app.run(debug=True)
