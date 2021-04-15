@@ -9,9 +9,10 @@ api_key = 'c6d454bc0e16fa560639'
 
 if not os.path.isfile('countries_details.txt'):
     cache_countries()
-
 countries_details = json.loads(open('countries_details.txt').read())
 customer_country = 'United Kingdom'
+
+input_json = json.loads(open('pricing.json').read())
 
 class test_cache_countries_output(unittest.TestCase):
     def test_output(self):
