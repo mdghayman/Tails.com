@@ -14,8 +14,9 @@
 
 1. To return output for a local (United Kingdom) customer: `http://127.0.0.1:5000/`.
 2. To return output for a customer from country with three letter code `XXX`: `http://127.0.0.1:5000/XXX/`.
-3. The output includes `customer_country`, `customer_currency`, `exchange_rate`, `total_price_GBP`, `total_vat_GBP`, and for each product includes `product_id`, `price_GBP`, and `vat`. If `customer_country` is not `United Kingdom`, the output will also include `customer_currency` amounts for `total price`, `total vat`, and `price` for each product.
-4. The file named `pricing.json` will be used as input.
+3. If the country code is unknown, the dictionary containing all country names and codes can be found at `http://127.0.0.1:5000/XXX/country_codes/`.
+4. The output includes `customer_country`, `customer_currency`, `exchange_rate`, `total_price_GBP`, `total_vat_GBP`, and for each product includes `product_id`, `price_GBP`, and `vat`. If `customer_country` is not `United Kingdom`, the output will also include `customer_currency` amounts for `total price`, `total vat`, and `price` for each product.
+5. The file named `pricing.json` will be used as input.
 
 ## 2.  If you had more time, what improvements would you make if any?
 
